@@ -65,13 +65,13 @@ You can use `.jpg`, `.jpeg`, `.png`, or `.webp`; if you use a different extensio
 
 **Already in `images/`:** `logo.png` (your Reams Family Creations logo).
 
-## GitHub repo and hosting (ModularGunworksLLC)
+## GitHub repo and hosting (ReamsFamilyCreations)
 
-You can create this site in a **new repo under your existing GitHub user** `ModularGunworksLLC` and host it on GitHub Pages. Each repo gets its own site; your other repos are unaffected.
+You can create this site in a **new repo under your GitHub user** [ReamsFamilyCreations](https://github.com/ReamsFamilyCreations) and host it on GitHub Pages.
 
 ### 1. Create the repo
 
-1. Go to [github.com](https://github.com) and sign in as **ModularGunworksLLC**.
+1. Go to [github.com](https://github.com) and sign in as **ReamsFamilyCreations**.
 2. Click **+** → **New repository**.
 3. Name it (e.g. `reams-family-creations`).
 4. **Public**, and do **not** add a README (this project already has one).
@@ -86,7 +86,7 @@ git init
 git add .
 git commit -m "Initial commit: Reams Family Creations static site"
 git branch -M main
-git remote add origin https://github.com/ModularGunworksLLC/reams-family-creations.git
+git remote add origin https://github.com/ReamsFamilyCreations/reams-family-creations.git
 git push -u origin main
 ```
 
@@ -101,7 +101,7 @@ Use your actual repo name in place of `reams-family-creations` if you chose some
 
 After a couple of minutes the site will be at:
 
-**https://ModularGunworksLLC.github.io/reams-family-creations/**
+**https://reamsfamilycreations.github.io/reams-family-creations/**
 
 (Replace `reams-family-creations` with your repo name if different.)
 
