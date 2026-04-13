@@ -9,7 +9,12 @@
   var imgEl = modal.querySelector(".product-modal__img");
   var titleEl = modal.querySelector(".product-modal__title");
   var descEl = modal.querySelector(".product-modal__desc");
+  var prevBtn = modal.querySelector(".product-modal__arrow--prev");
+  var nextBtn = modal.querySelector(".product-modal__arrow--next");
+  var countEl = modal.querySelector(".product-modal__count");
   var lastFocus = null;
+  var slides = [];
+  var slideIndex = 0;
 
   var TILES = {
     "cutting-board": {
@@ -31,10 +36,23 @@
       real: "images/key-holder.png",
     },
     furniture: {
-      title: "Key Holders",
-      desc: "Wall-mounted racks in custom shapes (including home-state silhouettes) with hooks sized for keys and light gear.",
+      title: "Idaho home sweet home key holder",
+      desc: "Wall-mounted key racks cut to your state’s silhouette, with hooks and lettering in the finish you like. Shown here: several Idaho styles—we can build yours for any state and your own wording.",
       ai: "images/ai/furniture.png",
-      real: "images/furniture.png",
+      gallery: [
+        {
+          src: "images/idaho-key-holder-variations-group.png",
+          alt: "Three Idaho key holder variations with different stains and lettering.",
+        },
+        {
+          src: "images/idaho-key-holder-home-sweet-home.png",
+          alt: "Idaho key holder with HOME SWEET HOME and charred edge detail.",
+        },
+        {
+          src: "images/idaho-key-holder-my-home-sweet-home.png",
+          alt: "Idaho key holder with MY HOME SWEET HOME and five brass hooks.",
+        },
+      ],
     },
     "rustic-board": {
       title: "Inlaid cutting & serving boards",
@@ -62,22 +80,44 @@
     },
   };
 
+  function getSlides(tile) {
+    if (tile.gallery && tile.gallery.length) return tile.gallery.slice();
+    if (tile.real) {
+      return [
+        {
+          src: tile.real,
+          alt: tile.title + " — photo of finished piece",
+        },
+      ];
+    }
+    return [];
+  }
+
+  function thumbFallback(tile) {
+    if (tile.real) return tile.real;
+    if (tile.gallery && tile.gallery[0]) return tile.gallery[0].src;
+    return "";
+  }
+
   function setThumbSrc(thumbImg, tile) {
     var ai = tile.ai;
-    var real = tile.real;
+    var fb = thumbFallback(tile);
+    if (!ai) {
+      if (fb) thumbImg.src = fb;
+      return;
+    }
     var probe = new Image();
     probe.onload = function () {
       thumbImg.src = ai;
     };
     probe.onerror = function () {
-      thumbImg.src = real;
+      if (fb) thumbImg.src = fb;
     };
     probe.src = ai;
   }
 
   function wireThumbs() {
-    var cards = document.querySelectorAll(".card[data-tile-id]");
-    cards.forEach(function (card) {
+    document.querySelectorAll(".card[data-tile-id]").forEach(function (card) {
       var id = card.getAttribute("data-tile-id");
       var tile = TILES[id];
       if (!tile) return;
@@ -86,14 +126,49 @@
     });
   }
 
+  function updateGalleryChrome() {
+    var multi = slides.length > 1;
+    prevBtn.hidden = !multi;
+    nextBtn.hidden = !multi;
+    if (!countEl) return;
+    if (multi) {
+      countEl.hidden = false;
+      countEl.textContent =
+        "Photo " + (slideIndex + 1) + " of " + slides.length + " — use arrows or keyboard ← →";
+    } else {
+      countEl.hidden = true;
+      countEl.textContent = "";
+    }
+  }
+
+  function renderSlide() {
+    if (!slides.length) {
+      imgEl.removeAttribute("src");
+      imgEl.alt = "";
+      updateGalleryChrome();
+      return;
+    }
+    var s = slides[slideIndex];
+    imgEl.src = s.src;
+    imgEl.alt = s.alt || "";
+    updateGalleryChrome();
+  }
+
+  function showRelative(delta) {
+    if (slides.length <= 1) return;
+    slideIndex = (slideIndex + delta + slides.length) % slides.length;
+    renderSlide();
+  }
+
   function openModal(id) {
     var tile = TILES[id];
     if (!tile) return;
+    slides = getSlides(tile);
+    slideIndex = 0;
     lastFocus = document.activeElement;
     titleEl.textContent = tile.title;
     descEl.textContent = tile.desc;
-    imgEl.src = tile.real;
-    imgEl.alt = tile.title + " — photo of finished piece";
+    renderSlide();
     modal.hidden = false;
     document.body.classList.add("modal-open");
     closeBtn.focus();
@@ -102,7 +177,16 @@
   function closeModal() {
     modal.hidden = true;
     document.body.classList.remove("modal-open");
+    slides = [];
+    slideIndex = 0;
     imgEl.removeAttribute("src");
+    imgEl.alt = "";
+    if (countEl) {
+      countEl.hidden = true;
+      countEl.textContent = "";
+    }
+    prevBtn.hidden = true;
+    nextBtn.hidden = true;
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
@@ -118,10 +202,27 @@
     });
   });
 
+  prevBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    showRelative(-1);
+  });
+  nextBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    showRelative(1);
+  });
+
   backdrop.addEventListener("click", closeModal);
   closeBtn.addEventListener("click", closeModal);
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
+    if (modal.hidden) return;
+    if (e.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (slides.length > 1 && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+      e.preventDefault();
+      showRelative(e.key === "ArrowLeft" ? -1 : 1);
+    }
   });
 
   wireThumbs();
