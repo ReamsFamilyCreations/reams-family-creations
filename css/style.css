@@ -209,6 +209,15 @@ a:hover {
   margin: 0 0 2rem;
 }
 
+.section-note {
+  max-width: 640px;
+  margin: -1.25rem auto 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--brown-600);
+  line-height: 1.5;
+}
+
 /* Product / card grid */
 .card-grid {
   display: grid;
@@ -226,6 +235,119 @@ a:hover {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 28px rgba(45, 35, 24, 0.15);
+}
+
+.card--interactive {
+  cursor: pointer;
+  text-align: left;
+  border: none;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+
+.card--interactive:focus {
+  outline: none;
+}
+
+.card--interactive:focus-visible {
+  outline: 3px solid var(--brown-300);
+  outline-offset: 2px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.product-modal[hidden] {
+  display: none;
+}
+
+.product-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 33, 24, 0.55);
+  cursor: pointer;
+}
+
+.product-modal__panel {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  width: 100%;
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(30, 22, 16, 0.35);
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.product-modal__close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--cream-dark);
+  color: var(--brown-900);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.product-modal__close:hover {
+  background: var(--brown-100);
+}
+
+.product-modal__img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--cream-dark);
+  margin-top: 0.25rem;
+}
+
+.product-modal__title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: var(--brown-900);
+  padding-right: 2rem;
+}
+
+.product-modal__desc {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--brown-600);
+  line-height: 1.55;
+}
+
+.product-modal__hint {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+}
+
+.product-modal__hint a {
+  font-weight: 600;
 }
 
 .card-image {

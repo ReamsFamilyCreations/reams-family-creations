@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/home-modal.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -39,30 +40,31 @@
 
     <section class="section" aria-labelledby="creations-heading">
       <h2 id="creations-heading" class="section-title">Custom wood creations from our family to yours.</h2>
+      <p class="section-note">Tiles show artistic previews. Click any tile for a short description and a photo of the actual piece.</p>
       <div class="card-grid">
-        <article class="card">
-          <img src="images/cutting-board.png" alt="Wooden cutting board" class="card-image">
+        <article class="card card--interactive" data-tile-id="cutting-board" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Cutting boards — open details and shop photo">
+          <img src="images/ai/cutting-board.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Cutting Boards</h3>
             <p class="card-meta">Custom sizes and woods</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/wall-art.png" alt="Wooden cribbage board with start and finish" class="card-image">
+        <article class="card card--interactive" data-tile-id="wall-art" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Cribbage and game boards — open details and shop photo">
+          <img src="images/ai/wall-art.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Cribbage &amp; Game Boards</h3>
             <p class="card-meta">Custom tracks and details</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/key-holder.png" alt="Live edge console table with blue epoxy river" class="card-image">
+        <article class="card card--interactive" data-tile-id="key-holder" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Furniture and tables — open details and shop photo">
+          <img src="images/ai/key-holder.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Furniture &amp; Tables</h3>
             <p class="card-meta">Live edge, epoxy, and more</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/furniture.png" alt="Idaho-shaped wall key holders reading home sweet home" class="card-image">
+        <article class="card card--interactive" data-tile-id="furniture" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Key holders — open details and shop photo">
+          <img src="images/ai/furniture.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Key Holders</h3>
             <p class="card-meta">Wall-mounted, personalized shapes</p>
@@ -74,29 +76,29 @@
     <section class="section" aria-labelledby="favorites-heading">
       <h2 id="favorites-heading" class="section-title">Customer Favorites</h2>
       <div class="card-grid">
-        <article class="card">
-          <img src="images/rustic-board.png" alt="Striped walnut board with dark deer silhouette inlay" class="card-image">
+        <article class="card card--interactive" data-tile-id="rustic-board" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Inlaid cutting and serving boards — open details and shop photo">
+          <img src="images/ai/rustic-board.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Inlaid cutting &amp; serving boards</h3>
             <p class="card-meta">Striped walnut, wildlife motifs</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/ring-holder.png" alt="Large dark wood board with antler frame and pine forest deer inlay" class="card-image">
+        <article class="card card--interactive" data-tile-id="ring-holder" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Statement inlay boards — open details and shop photo">
+          <img src="images/ai/ring-holder.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Statement inlay boards</h3>
             <p class="card-meta">Antler, forest scenes, showpieces</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/charcuterie.png" alt="Square light wood charcuterie board with deer and forest inlay" class="card-image">
+        <article class="card card--interactive" data-tile-id="charcuterie" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Cheese and charcuterie boards — open details and shop photo">
+          <img src="images/ai/charcuterie.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Cheese &amp; Charcuterie Boards</h3>
             <p class="card-meta">Hosting &amp; entertaining</p>
           </div>
         </article>
-        <article class="card">
-          <img src="images/stool.png" alt="Half-moon live edge wood tabletop on black metal legs" class="card-image">
+        <article class="card card--interactive" data-tile-id="stool" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Live-edge tables — open details and shop photo">
+          <img src="images/ai/stool.png" alt="" class="card-image" width="800" height="800" decoding="async">
           <div class="card-body">
             <h3 class="card-title">Live-edge tables</h3>
             <p class="card-meta">Custom shapes &amp; metal bases</p>
@@ -114,6 +116,17 @@
       </p>
     </section>
   </main>
+
+  <div id="product-modal" class="product-modal" hidden role="dialog" aria-modal="true" aria-labelledby="product-modal-title" aria-describedby="product-modal-desc">
+    <div class="product-modal__backdrop" tabindex="-1"></div>
+    <div class="product-modal__panel" role="document">
+      <button type="button" class="product-modal__close" aria-label="Close details">&times;</button>
+      <img class="product-modal__img" src="" alt="" width="900" height="900" decoding="async">
+      <h2 id="product-modal-title" class="product-modal__title"></h2>
+      <p id="product-modal-desc" class="product-modal__desc"></p>
+      <p class="product-modal__hint"><a href="contact.html">Request something like this</a></p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <img src="images/logo.png" alt="" class="footer-logo" aria-hidden="true">
