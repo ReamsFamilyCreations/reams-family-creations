@@ -100,10 +100,19 @@
       real: "images/rustic-board.png",
     },
     "ring-holder": {
-      title: "Statement inlay boards",
-      desc: "Large-format boards with layered scenes—antler frames, forest backdrops, and dramatic center motifs.",
+      title: "Beautiful handcrafted wildlife cutting board",
+      desc: "Hand built from rich walnut with a contrasting light-wood scene: a buck among evergreens framed inside sweeping antler shapes. A routed drip edge (juice groove) follows the perimeter for everyday prep. This board is 22″ long × 13″ wide; tell us the size, species, and artwork you want for your kitchen.",
       ai: "images/ai/ring-holder.png",
-      real: "images/ring-holder.png",
+      gallery: [
+        {
+          src: "images/wildlife-walnut-cutting-board-22x13-wide.png",
+          alt: "Horizontal walnut wildlife cutting board with antler-framed buck and pine trees and juice groove.",
+        },
+        {
+          src: "images/wildlife-walnut-cutting-board-22x13-close.png",
+          alt: "Close-up of dark walnut wildlife cutting board with drip edge and inlaid antler scene.",
+        },
+      ],
     },
     charcuterie: {
       title: "Beautiful wildlife cutting board",
