@@ -103,10 +103,19 @@
       real: "images/charcuterie.png",
     },
     stool: {
-      title: "Live-edge tables",
-      desc: "Custom profiles like half-moons and free-form slabs, paired with metal legs chosen for your space.",
+      title: "Beautiful handcrafted silver maple foyer / side table",
+      desc: "Pictured at 32″ wide × 13″ deep × 31″ tall. A thick silver maple demilune (half-moon) slab keeps the natural live edge along the front, finished glossy to highlight grain, spalting, and warm tones. The open black steel base tucks neatly along a wall in an entry or beside seating. We can adapt dimensions, wood species, edge profiles, and metal finishes to match your home.",
       ai: "images/ai/stool.png",
-      real: "images/stool.png",
+      gallery: [
+        {
+          src: "images/silver-maple-foyer-table-angle.png",
+          alt: "Silver maple demilune foyer table with live edge top and black metal base.",
+        },
+        {
+          src: "images/silver-maple-foyer-table-room.png",
+          alt: "Silver maple half-moon side table against a wall showing grain and metal legs.",
+        },
+      ],
     },
   };
 
