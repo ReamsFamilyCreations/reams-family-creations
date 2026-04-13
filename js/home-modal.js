@@ -1,8 +1,30 @@
 (function () {
   "use strict";
 
+  // #region agent log
+  function dbg(message, data, hypothesisId) {
+    fetch("http://127.0.0.1:7830/ingest/47d32347-f99b-477f-8405-477bb2132ee9", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "6ce618" },
+      body: JSON.stringify({
+        sessionId: "6ce618",
+        location: "home-modal.js",
+        message: message,
+        data: data || {},
+        timestamp: Date.now(),
+        hypothesisId: hypothesisId || "H0",
+      }),
+    }).catch(function () {});
+  }
+  // #endregion
+
   var modal = document.getElementById("product-modal");
-  if (!modal) return;
+  if (!modal) {
+    // #region agent log
+    dbg("early_exit_no_modal", {}, "H2");
+    // #endregion
+    return;
+  }
 
   var backdrop = modal.querySelector(".product-modal__backdrop");
   var closeBtn = modal.querySelector(".product-modal__close");
@@ -15,6 +37,23 @@
   var lastFocus = null;
   var slides = [];
   var slideIndex = 0;
+
+  // #region agent log
+  dbg(
+    "modal_dom_ready",
+    {
+      hasBackdrop: !!backdrop,
+      hasClose: !!closeBtn,
+      hasImg: !!imgEl,
+      hasTitle: !!titleEl,
+      hasDesc: !!descEl,
+      hasPrev: !!prevBtn,
+      hasNext: !!nextBtn,
+      hasCount: !!countEl,
+    },
+    "H2"
+  );
+  // #endregion
 
   var TILES = {
     "cutting-board": {
@@ -223,14 +262,23 @@
   function showRelative(delta) {
     if (slides.length <= 1) return;
     slideIndex = (slideIndex + delta + slides.length) % slides.length;
+    // #region agent log
+    dbg("showRelative", { delta: delta, slideIndex: slideIndex, slideCount: slides.length }, "H6");
+    // #endregion
     renderSlide();
   }
 
   function openModal(id) {
     var tile = TILES[id];
+    // #region agent log
+    dbg("openModal", { id: id, hasTile: !!tile }, "H3");
+    // #endregion
     if (!tile) return;
     slides = getSlides(tile);
     slideIndex = 0;
+    // #region agent log
+    dbg("openModal_slides", { id: id, slideCount: slides.length }, "H4");
+    // #endregion
     lastFocus = document.activeElement;
     titleEl.textContent = tile.title;
     descEl.textContent = tile.desc;
@@ -241,6 +289,9 @@
   }
 
   function closeModal() {
+    // #region agent log
+    dbg("closeModal", {}, "H5");
+    // #endregion
     modal.hidden = true;
     document.body.classList.remove("modal-open");
     slides = [];
@@ -292,4 +343,11 @@
   });
 
   wireThumbs();
+  // #region agent log
+  dbg(
+    "wireThumbs_done",
+    { wiredCards: document.querySelectorAll(".card[data-tile-id]").length },
+    "H4"
+  );
+  // #endregion
 })();
