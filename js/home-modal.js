@@ -97,10 +97,19 @@
       real: "images/ring-holder.png",
     },
     charcuterie: {
-      title: "Cheese & Charcuterie Boards",
-      desc: "Compact squares and generous platters for hosting—balanced proportions for spreads and easy carrying.",
+      title: "Beautiful wildlife cutting board",
+      desc: "Sized at 13″ × 12″ and finished with food-safe oil so it is ready for the kitchen. Light hardwood shows off a deep engraved scene: a buck among evergreens framed by antler silhouettes. We can design similar wildlife artwork, monograms, or other layouts on boards in the dimensions you need.",
       ai: "images/ai/charcuterie.png",
-      real: "images/charcuterie.png",
+      gallery: [
+        {
+          src: "images/wildlife-cutting-board-full.png",
+          alt: "Top view of square wildlife cutting board with deer and pine trees inside an antler outline.",
+        },
+        {
+          src: "images/wildlife-cutting-board-detail.png",
+          alt: "Close-up of engraved wildlife scene with buck, forest, and antler frame on light wood.",
+        },
+      ],
     },
     stool: {
       title: "Beautiful handcrafted silver maple foyer / side table",
