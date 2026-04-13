@@ -18,10 +18,19 @@
 
   var TILES = {
     "cutting-board": {
-      title: "Cutting Boards",
-      desc: "Custom sizes and wood species, with optional routed or inlaid artwork. Each board is finished for daily kitchen use.",
+      title: "Beautiful handcrafted cutting board — chef knife design",
+      desc: "$50. A crossed chef-knife inlay, full perimeter juice groove (drip edge), and food-safe oil so it is ready to chop. This example is 16″ × 16″ in mixed hardwoods; ask us for other sizes, woods, or custom artwork.",
       ai: "images/ai/cutting-board.png",
-      real: "images/cutting-board.png",
+      gallery: [
+        {
+          src: "images/chef-cutting-board-stripes-juice-groove.png",
+          alt: "Square striped hardwood cutting board with crossed chef knives inlay and perimeter juice groove.",
+        },
+        {
+          src: "images/chef-cutting-board-dark-border.png",
+          alt: "Square chef knife cutting board with dark wood border, light center, and drip edge.",
+        },
+      ],
     },
     "wall-art": {
       title: "Washington & Idaho cribbage boards",
