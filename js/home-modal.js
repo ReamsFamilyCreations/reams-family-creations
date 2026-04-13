@@ -24,10 +24,27 @@
       real: "images/cutting-board.png",
     },
     "wall-art": {
-      title: "Cribbage & Game Boards",
-      desc: "Precision-routed tracks, peg storage, and personalized details. Great for gifts and game rooms.",
+      title: "Washington & Idaho cribbage boards",
+      desc: "State-shaped or classic rectangular tracks, engraved START / FINISH / WINS, and fully custom layouts. The back is hollowed and fitted with a sliding panel so pegs and a deck of cards stay with the board—great for travel and gifts. Shown: Washington silhouette, Idaho silhouette, a traditional board, and the storage back with our shop mark.",
       ai: "images/ai/wall-art.png",
-      real: "images/wall-art.png",
+      gallery: [
+        {
+          src: "images/cribbage-board-washington.png",
+          alt: "Washington state-shaped wooden cribbage board with START, WINS, and FINISH.",
+        },
+        {
+          src: "images/cribbage-board-idaho.png",
+          alt: "Idaho state-shaped wooden cribbage board with track and engraved lettering.",
+        },
+        {
+          src: "images/cribbage-board-classic-rectangular.png",
+          alt: "Rectangular wooden cribbage board with START and FINISH and traditional peg holes.",
+        },
+        {
+          src: "images/cribbage-board-back-storage.png",
+          alt: "Back of cribbage board showing sliding storage panel and Reams Family Creations logo.",
+        },
+      ],
     },
     "key-holder": {
       title: "Furniture & Tables",
