@@ -47,10 +47,23 @@
       ],
     },
     "key-holder": {
-      title: "Furniture & Tables",
-      desc: "Live-edge tops, epoxy rivers, and sturdy bases—built for real homes, not showroom-only pieces.",
+      title: "Beautiful handcrafted beach themed foyer / side table",
+      desc: "Shown here at 37″ long × 14″ wide × 30″ tall. Live-edge wood, ocean blues, foamy whites, and sandy resin details on black hairpin legs—perfect beside a door or sofa. Yours can be fully custom: other resin colors, wood species, dimensions, and leg styles are all welcome.",
       ai: "images/ai/key-holder.png",
-      real: "images/key-holder.png",
+      gallery: [
+        {
+          src: "images/foyer-table-beach-angle.png",
+          alt: "Handcrafted beach-themed foyer table with turquoise epoxy river and hairpin legs.",
+        },
+        {
+          src: "images/foyer-table-beach-overhead.png",
+          alt: "Overhead view of beach-themed epoxy river table with wood islands and wave details.",
+        },
+        {
+          src: "images/foyer-table-beach-room.png",
+          alt: "Beach-themed foyer or side table against a wall on wood flooring.",
+        },
+      ],
     },
     furniture: {
       title: "Idaho home sweet home key holder",
